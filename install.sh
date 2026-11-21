@@ -92,13 +92,25 @@ fi
 systemctl enable tlp.service
 tlp start
 
+# foot warns and falls back when LANG is C. Leave a real locale alone.
+if [ -f /etc/locale.conf ] && grep -q '^LANG=' /etc/locale.conf; then
+  if grep -Eq '^LANG=(C|POSIX)$' /etc/locale.conf; then
+    sed -i 's/^LANG=.*/LANG=C.UTF-8/' /etc/locale.conf
+  fi
+else
+  printf 'LANG=C.UTF-8\n' >> /etc/locale.conf
+fi
+
 install -Dm755 "$root/bin/comet-session" /usr/bin/comet-session
 install -Dm755 "$root/bin/comet-power" /usr/bin/comet-power
 install -Dm755 "$root/bin/comet-waybar" /usr/bin/comet-waybar
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
-install -Dm644 "$root/share/foot/foot.ini" /usr/share/comet/foot/foot.ini
+install -Dm644 "$root/share/foot/foot.ini" /etc/xdg/foot/foot.ini
+install -Dm644 "$root/share/fuzzel/fuzzel.ini" /etc/xdg/fuzzel/fuzzel.ini
+install -Dm644 "$root/share/swaylock/config" /etc/swaylock/config
+install -Dm644 "$root/share/mako/config" /usr/share/comet/mako/config
 install -Dm644 "$root/share/os-release" /usr/share/comet/os-release
 install -Dm644 "$root/system/profile.d/comet.sh" /etc/profile.d/comet.sh
 install -Dm644 "$root/system/logind.conf.d/comet.conf" /etc/systemd/logind.conf.d/comet.conf

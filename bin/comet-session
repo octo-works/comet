@@ -1,4 +1,11 @@
 #!/bin/sh
+# foot warns and falls back when the locale is C
+case "${LC_ALL:-${LANG:-C}}" in
+  C|POSIX)
+    unset LC_ALL
+    export LANG=C.UTF-8
+    ;;
+esac
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 export GDK_BACKEND=wayland,x11

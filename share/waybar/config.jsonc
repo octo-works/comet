@@ -1,17 +1,23 @@
 {
   "layer": "top",
-  "height": 32,
-  "spacing": 8,
-  "margin-top": 4,
-  "margin-left": 6,
-  "margin-right": 6,
+  "position": "left",
+  "margin": "6 0 6 6",
+  "spacing": 6,
   "modules-left": ["custom/launcher", "sway/workspaces"],
-  "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "pulseaudio", "battery", "clock"],
+  "modules-right": ["group/status", "group/controls", "clock"],
+  "group/status": {
+    "orientation": "inherit",
+    "modules": ["network", "cpu", "memory", "temperature"]
+  },
+  "group/controls": {
+    "orientation": "inherit",
+    "modules": ["backlight", "pulseaudio", "battery"]
+  },
   "custom/launcher": {
-    "format": "comet",
+    "format": "󰘩",
     "on-click": "fuzzel",
     "on-click-right": "comet-power",
-    "tooltip": false
+    "tooltip-format": "comet"
   },
   "sway/workspaces": {
     "disable-scroll": true,
@@ -19,45 +25,54 @@
   },
   "network": {
     "interval": 5,
-    "format-wifi": "{essid}",
-    "format-ethernet": "{ifname}",
-    "format-disconnected": "offline",
+    "format-wifi": "󰖩",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
     "tooltip-format-wifi": "{essid} {signalStrength}%",
-    "on-click": "foot nmtui"
+    "tooltip-format-ethernet": "{ifname} {ipaddr}",
+    "tooltip-format-disconnected": "offline",
+    "on-click": "footclient nmtui"
   },
   "cpu": {
-    "format": "cpu {usage}%",
+    "format": "󰻠",
+    "tooltip-format": "cpu {usage}%",
     "interval": 5
   },
   "memory": {
-    "format": "mem {percentage}%",
+    "format": "󰍛",
+    "tooltip-format": "mem {percentage}%",
     "interval": 5
   },
   "temperature": {
-    "format": "{temperatureC}C",
+    "format": "󰔏",
+    "tooltip-format": "{temperatureC}C",
     "critical-threshold": 90,
     "interval": 5
   },
   "backlight": {
-    "format": "light {percent}%",
+    "format": "󰃟",
+    "tooltip-format": "light {percent}%",
     "on-scroll-up": "brightnessctl set +5%",
     "on-scroll-down": "brightnessctl set 5%-"
   },
   "pulseaudio": {
-    "format": "vol {volume}%",
-    "format-muted": "muted",
+    "format": "󰕾",
+    "format-muted": "󰖁",
+    "tooltip-format": "vol {volume}%",
     "scroll-step": 5,
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "battery": {
     "interval": 30,
     "states": { "warning": 30, "critical": 15 },
-    "format": "{capacity}%",
-    "format-charging": "chg {capacity}%"
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"],
+    "tooltip-format": "{capacity}%"
   },
   "clock": {
-    "format": "{:%a %d %H:%M}",
-    "tooltip-format": "<tt>{calendar}</tt>",
+    "format": "{:%H\n%M}",
+    "tooltip-format": "{:%A %d %B %Y}\n<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3

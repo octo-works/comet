@@ -36,7 +36,7 @@ Reboot, then log in on tty1. Sway starts from `/etc/profile.d/comet.sh` for bash
 | Print | region screenshot in satty |
 | Shift+Print | full screenshot in satty |
 
-The terminal face is JetBrainsMono Nerd Font Mono. A user config at `~/.config/sway/config` replaces the Comet sway config. `~/.config/waybar/config.jsonc` replaces the Comet bar.
+The bar is a floating Gruvbox column on the left. Icons only; hover a module for its value. The terminal face is JetBrainsMono Nerd Font Mono. If the machine has no UTF-8 locale, the installer sets `LANG=C.UTF-8` so foot does not warn about the C locale. A user config at `~/.config/sway/config` replaces the Comet sway config. `~/.config/waybar/config.jsonc` replaces the Comet bar.
 
 ## Check on the machine
 

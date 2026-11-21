@@ -1,9 +1,9 @@
 #!/bin/sh
 choice=$(printf '%s\n' lock suspend reboot poweroff | fuzzel --dmenu --prompt 'power ')
 case "$choice" in
-  lock) swaylock -f -c 1e1e2e ;;
+  lock) swaylock -f ;;
   suspend)
-    swaylock -f -c 1e1e2e
+    swaylock -f
     systemctl suspend
     ;;
   reboot) systemctl reboot ;;
