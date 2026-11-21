@@ -88,7 +88,9 @@ systemctl enable --now NetworkManager.service
 if systemctl cat power-profiles-daemon.service >/dev/null 2>&1; then
   systemctl disable --now power-profiles-daemon.service
 fi
-systemctl enable --now tlp.service
+# tlp.service is After=multi-user.target, so enable --now cancels the start job.
+systemctl enable tlp.service
+tlp start
 
 install -Dm755 "$root/bin/comet-session" /usr/bin/comet-session
 install -Dm755 "$root/bin/comet-power" /usr/bin/comet-power
