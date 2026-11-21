@@ -1,0 +1,6 @@
+NAME="Comet"
+PRETTY_NAME="Comet"
+ID=comet
+ID_LIKE=arch
+BUILD_ID=0.1.0
+ANSI_COLOR="0;36"

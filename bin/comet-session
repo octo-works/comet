@@ -1,0 +1,11 @@
+#!/bin/sh
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export GDK_BACKEND=wayland,x11
+export QT_QPA_PLATFORM='wayland;xcb'
+export MOZ_ENABLE_WAYLAND=1
+
+if [ -f "$HOME/.config/sway/config" ]; then
+  exec sway
+fi
+exec sway --config /usr/share/comet/sway/config

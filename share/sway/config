@@ -1,0 +1,84 @@
+# Panel mode and scale come from the installer.
+include /etc/comet/sway-output.conf
+
+set $mod Mod4
+font "JetBrainsMono Nerd Font Mono" 12
+default_border pixel 2
+focus_follows_mouse no
+floating_modifier $mod
+
+input type:keyboard {
+    xkb_layout us
+    xkb_options caps:escape
+}
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    drag enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+bindsym $mod+Return exec foot
+bindsym $mod+d exec fuzzel
+bindsym $mod+e exec foot yazi
+bindsym $mod+g exec foot lazygit
+bindsym $mod+Shift+e exec comet-power
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+bindsym $mod+button1 move
+bindsym $mod+button2 resize
+
+bindsym Print exec grim -g "$(slurp)" /tmp/comet-shot.png && satty -f /tmp/comet-shot.png
+bindsym Shift+Print exec grim /tmp/comet-shot.png && satty -f /tmp/comet-shot.png
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+exec foot --server -c /usr/share/comet/foot/foot.ini
+exec swaybg -c '#1e1e2e'
+exec mako
+exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec dbus-update-activation-environment --systemd --all
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec swayidle -w timeout 600 'swaylock -f -c 1e1e2e' timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 1e1e2e'
+
+bar {
+    swaybar_command comet-waybar
+}

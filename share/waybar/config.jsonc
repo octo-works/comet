@@ -1,0 +1,67 @@
+{
+  "layer": "top",
+  "height": 32,
+  "spacing": 8,
+  "margin-top": 4,
+  "margin-left": 6,
+  "margin-right": 6,
+  "modules-left": ["custom/launcher", "sway/workspaces"],
+  "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "pulseaudio", "battery", "clock"],
+  "custom/launcher": {
+    "format": "comet",
+    "on-click": "fuzzel",
+    "on-click-right": "comet-power",
+    "tooltip": false
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "{essid}",
+    "format-ethernet": "{ifname}",
+    "format-disconnected": "offline",
+    "tooltip-format-wifi": "{essid} {signalStrength}%",
+    "on-click": "foot nmtui"
+  },
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 5
+  },
+  "memory": {
+    "format": "mem {percentage}%",
+    "interval": 5
+  },
+  "temperature": {
+    "format": "{temperatureC}C",
+    "critical-threshold": 90,
+    "interval": 5
+  },
+  "backlight": {
+    "format": "light {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+  "pulseaudio": {
+    "format": "vol {volume}%",
+    "format-muted": "muted",
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "battery": {
+    "interval": 30,
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{capacity}%",
+    "format-charging": "chg {capacity}%"
+  },
+  "clock": {
+    "format": "{:%a %d %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3
+    },
+    "interval": 30
+  }
+}
