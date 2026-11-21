@@ -26,6 +26,9 @@ input type:touchpad {
     middle_emulation enabled
 }
 
+bindgesture swipe:3:up workspace prev
+bindgesture swipe:3:down workspace next
+
 bindsym $mod+Return exec footclient
 bindsym $mod+d exec fuzzel
 bindsym $mod+e exec footclient yazi
@@ -35,6 +38,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+slash exec footclient --app-id comet-keys comet-keys
+
+for_window [app_id="comet-keys"] floating enable, resize set 520 420, move position center
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -78,7 +84,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 exec foot --server
-exec swaybg -c '#1d2021'
+exec swaybg -i /usr/share/comet/walls/chris-henry-bgBhzcfnvds-unsplash.jpg -m fill
 exec mako -c /usr/share/comet/mako/config
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec dbus-update-activation-environment --systemd --all

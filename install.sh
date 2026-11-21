@@ -91,8 +91,6 @@ fi
 # tlp.service is After=multi-user.target, so enable --now cancels the start job.
 systemctl enable tlp.service
 tlp start
-systemctl enable greetd.service
-systemctl set-default graphical.target
 
 # foot warns and falls back when LANG is C. Leave a real locale alone.
 if [ -f /etc/locale.conf ] && grep -q '^LANG=' /etc/locale.conf; then
@@ -106,6 +104,7 @@ fi
 install -Dm755 "$root/bin/comet-session" /usr/bin/comet-session
 install -Dm755 "$root/bin/comet-power" /usr/bin/comet-power
 install -Dm755 "$root/bin/comet-waybar" /usr/bin/comet-waybar
+install -Dm755 "$root/bin/comet-keys" /usr/bin/comet-keys
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
@@ -121,6 +120,18 @@ install -Dm644 "$root/system/xdg-desktop-portal/portals.conf" /etc/xdg/xdg-deskt
 install -Dm644 "$root/system/pacman.hooks/comet-os-release.hook" /etc/pacman.d/hooks/comet-os-release.hook
 install -Dm644 "$root/system/greetd/config.toml" /etc/greetd/config.toml
 install -Dm644 "$root/system/tuigreet/config.toml" /etc/tuigreet/config.toml
+install -Dm644 "$root/walls/chris-henry-bgBhzcfnvds-unsplash.jpg" /usr/share/comet/walls/chris-henry-bgBhzcfnvds-unsplash.jpg
+
+# greetd owns the display-manager alias. Drop the previous owner, then enable greetd.
+if [ -e /etc/systemd/system/display-manager.service ]; then
+  systemctl disable display-manager.service || true
+fi
+systemctl enable greetd.service
+systemctl set-default graphical.target
+if id greeter >/dev/null 2>&1; then
+  usermod -s /usr/bin/nologin greeter
+  install -d -o greeter -g greeter -m 0755 /var/cache/tuigreet
+fi
 
 install -d /etc/comet
 mapfile -t panel < <(detect_connector)

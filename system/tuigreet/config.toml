@@ -4,33 +4,35 @@ greeting = "comet"
 
 [remember]
 username = true
+session = false
 
 [secret]
 mode = "characters"
 characters = "*"
 
-# shortcut: 12 fps while the login screen is up, raise fps if the rain looks sparse
+# shortcut: 15 fps while the login screen is up, raise fps if the rain looks sparse
 [background]
 kind = "matrix"
-fps = 12
+fps = 15
 
 [background.matrix]
-head_color = "#ebdbb2"
-bright_color = "#b8bb26"
-dim_color = "#3c3836"
+head_color = "#CCFFCC"
+bright_color = "#33FF66"
+dim_color = "#006622"
 min_length = 6
-max_length = 16
-min_speed = 0.25
-max_speed = 0.8
+max_length = 18
+min_speed = 0.30
+max_speed = 1.10
+mutate_chance = 0.02
 
 [theme]
-border = "yellow"
+border = "green"
 text = "white"
-time = "yellow"
+time = "green"
 container = "black"
 title = "green"
-greet = "yellow"
+greet = "green"
 prompt = "green"
 input = "white"
-action = "gray"
-button = "yellow"
+action = "white"
+button = "green"

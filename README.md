@@ -20,7 +20,7 @@ The script refuses to run unless it is root, `/etc/arch-release` exists, and a d
 
 `./install.sh --check` only tests the panel snippet. It does not install anything.
 
-Reboot. tty1 shows tuigreet. The rain runs at 12 frames per second until login, then it is gone. F12 is power. A shell login on tty1 still starts Sway from `/etc/profile.d/comet.sh`.
+Reboot. tty1 shows tuigreet, with matrix rain behind the box at 15 frames per second. The greeter user is not a desktop login. F12 is power. A shell login on tty1 still starts Sway from `/etc/profile.d/comet.sh`.
 
 ## Keys
 
@@ -35,6 +35,8 @@ Reboot. tty1 shows tuigreet. The rain runs at 12 frames per second until login, 
 | Super+Shift+h/j/k/l | move |
 | Print | region screenshot in satty |
 | Shift+Print | full screenshot in satty |
+| Super+/ | hotkey window |
+| 3-finger swipe up / down | previous / next workspace |
 
 The bar is a floating Gruvbox column on the left. Icons only; hover a module for its value. The terminal face is JetBrainsMono Nerd Font Mono. If the machine has no UTF-8 locale, the installer sets `LANG=C.UTF-8` so foot does not warn about the C locale. A user config at `~/.config/sway/config` replaces the Comet sway config. `~/.config/waybar/config.jsonc` replaces the Comet bar.
 

@@ -1,0 +1,24 @@
+#!/bin/sh
+cat <<'EOF'
+comet
+
+super+return        terminal
+super+d             launcher
+super+e             yazi
+super+g             lazygit
+super+shift+e       power
+super+shift+q       close window
+super+f             fullscreen
+super+shift+c       reload sway
+super+h/j/k/l       focus
+super+shift+h/j/k/l move window
+super+1…9           workspace
+super+shift+1…9     move window to workspace
+3-finger swipe up   previous workspace
+3-finger swipe down next workspace
+print               region screenshot
+shift+print         full screenshot
+super+/             this list
+EOF
+printf '\npress enter to close '
+read -r _
