@@ -5,10 +5,17 @@ comet
 super+return        terminal
 super+space         launcher
 super+q             close window
-super+e             yazi
-super+g             lazygit
+super+e             yazi (scratchpad)
+super+g             lazygit (scratchpad)
+super+b             btop
+super+w             wallpaper
+super+t             split / tabbed
+super+s             stack
+super+minus         park window
+super+plus          show parked window
 super+shift+e       power
 super+f             fullscreen
+super+shift+space   float window
 super+shift+c       reload sway
 super+h/j/k/l       focus
 super+shift+h/j/k/l move window
@@ -16,6 +23,10 @@ super+1…9           workspace
 super+shift+1…9     move window to workspace
 3-finger swipe up   previous workspace
 3-finger swipe down next workspace
+volume keys         volume, capped at 100%
+mute key            mute
+mic mute key        mute microphone
+brightness keys     backlight
 print               region screenshot
 shift+print         full screenshot
 super+/             this list

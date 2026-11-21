@@ -31,16 +31,25 @@ bindgesture swipe:3:down workspace next
 
 bindsym $mod+Return exec footclient
 bindsym $mod+space exec fuzzel
-bindsym $mod+e exec footclient yazi
-bindsym $mod+g exec footclient lazygit
+bindsym $mod+e exec comet-scratch scratch-yazi yazi
+bindsym $mod+g exec comet-scratch scratch-lazygit lazygit
+bindsym $mod+b exec footclient --app-id tui-float btop
+bindsym $mod+w exec comet-wall pick
 bindsym $mod+Shift+e exec comet-power
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+f fullscreen toggle
+bindsym $mod+t layout toggle split tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+slash exec footclient --app-id comet-keys comet-keys
 
-for_window [app_id="comet-keys"] floating enable, resize set 520 420, move position center
+for_window [app_id="comet-keys"] floating enable, resize set 520 520, move position center
+for_window [app_id="tui-float"] floating enable, resize set 900 700, move position center
+for_window [app_id="scratch-yazi"] move scratchpad, scratchpad show
+for_window [app_id="scratch-lazygit"] move scratchpad, scratchpad show
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -84,7 +93,7 @@ bindsym XF86MonBrightnessUp exec comet-level light up
 bindsym XF86MonBrightnessDown exec comet-level light down
 
 exec foot --server
-exec swaybg -i /usr/share/comet/walls/chris-henry-bgBhzcfnvds-unsplash.jpg -m fill
+exec comet-wall restore
 exec mako -c /usr/share/comet/mako/config
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec dbus-update-activation-environment --systemd --all

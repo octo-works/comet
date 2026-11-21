@@ -108,6 +108,8 @@ install -Dm755 "$root/bin/comet-keys" /usr/bin/comet-keys
 install -Dm755 "$root/bin/comet-greet" /usr/bin/comet-greet
 install -Dm755 "$root/bin/comet-shell" /usr/bin/comet-shell
 install -Dm755 "$root/bin/comet-level" /usr/bin/comet-level
+install -Dm755 "$root/bin/comet-wall" /usr/bin/comet-wall
+install -Dm755 "$root/bin/comet-scratch" /usr/bin/comet-scratch
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
@@ -123,7 +125,10 @@ install -Dm644 "$root/system/xdg-desktop-portal/portals.conf" /etc/xdg/xdg-deskt
 install -Dm644 "$root/system/pacman.hooks/comet-os-release.hook" /etc/pacman.d/hooks/comet-os-release.hook
 install -Dm644 "$root/system/greetd/config.toml" /etc/greetd/config.toml
 install -Dm644 "$root/system/tuigreet/config.toml" /etc/tuigreet/config.toml
-install -Dm644 "$root/walls/chris-henry-bgBhzcfnvds-unsplash.jpg" /usr/share/comet/walls/chris-henry-bgBhzcfnvds-unsplash.jpg
+install -d /usr/share/comet/walls
+while IFS= read -r img; do
+  install -m644 "$img" "/usr/share/comet/walls/$(basename "$img")"
+done < <(find "$root/walls" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \))
 
 # greetd owns the display-manager alias. Drop the previous owner, then enable greetd.
 if [ -e /etc/systemd/system/display-manager.service ]; then

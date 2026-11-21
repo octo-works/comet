@@ -1,0 +1,9 @@
+#!/bin/sh
+# Show the parked window, or start it. The sway rule moves a new one onto the scratchpad.
+id=$1
+shift
+if swaymsg -t get_tree | grep -F -q "\"app_id\": \"$id\""; then
+  swaymsg "[app_id=\"$id\"] scratchpad show"
+else
+  exec footclient --app-id "$id" "$@"
+fi

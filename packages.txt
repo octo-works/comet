@@ -33,6 +33,8 @@ linux-firmware
 libnotify
 yazi
 lazygit
+btop
+vim
 git
 fd
 ripgrep

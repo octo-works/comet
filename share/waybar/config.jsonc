@@ -39,7 +39,7 @@
     "tooltip-format-wifi": "{essid} {signalStrength}%",
     "tooltip-format-ethernet": "{ifname} {ipaddr}",
     "tooltip-format-disconnected": "offline",
-    "on-click": "footclient nmtui"
+    "on-click": "footclient --app-id tui-float nmtui"
   },
   "cpu": {
     "format": "󰻠",
