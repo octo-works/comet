@@ -11,7 +11,15 @@
   },
   "group/controls": {
     "orientation": "inherit",
-    "modules": ["backlight", "pulseaudio", "battery"]
+    "modules": ["group/light", "group/volume", "battery"]
+  },
+  "group/light": {
+    "orientation": "horizontal",
+    "modules": ["backlight", "custom/light"]
+  },
+  "group/volume": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "custom/vol"]
   },
   "custom/launcher": {
     "format": "󰘩",
@@ -52,15 +60,27 @@
   "backlight": {
     "format": "󰃟",
     "tooltip-format": "light {percent}%",
-    "on-scroll-up": "brightnessctl set +5%",
-    "on-scroll-down": "brightnessctl set 5%-"
+    "on-scroll-up": "comet-level light up",
+    "on-scroll-down": "comet-level light down"
+  },
+  "custom/light": {
+    "exec": "cat \"${XDG_RUNTIME_DIR:-/tmp}/comet/light\" 2>/dev/null || true",
+    "signal": 9,
+    "format": "{}"
   },
   "pulseaudio": {
     "format": "󰕾",
     "format-muted": "󰖁",
     "tooltip-format": "vol {volume}%",
-    "scroll-step": 5,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    "max-volume": 100,
+    "on-click": "comet-level volume mute",
+    "on-scroll-up": "comet-level volume up",
+    "on-scroll-down": "comet-level volume down"
+  },
+  "custom/vol": {
+    "exec": "cat \"${XDG_RUNTIME_DIR:-/tmp}/comet/volume\" 2>/dev/null || true",
+    "signal": 8,
+    "format": "{}"
   },
   "battery": {
     "interval": 30,

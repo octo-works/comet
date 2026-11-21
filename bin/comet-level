@@ -1,0 +1,47 @@
+#!/bin/sh
+# Cap volume at 100% and flash a percentage beside the matching bar icon.
+runtime="${XDG_RUNTIME_DIR:-/tmp}/comet"
+mkdir -p "$runtime"
+
+show() {
+  name=$1
+  text=$2
+  signal=$3
+  printf '%s' "$text" > "$runtime/$name"
+  date +%s%N > "$runtime/$name.stamp"
+  stamp=$(cat "$runtime/$name.stamp")
+  pkill -RTMIN+"$signal" -x waybar 2>/dev/null || true
+  (
+    sleep 1.2
+    [ "$(cat "$runtime/$name.stamp" 2>/dev/null)" = "$stamp" ] || exit 0
+    : > "$runtime/$name"
+    pkill -RTMIN+"$signal" -x waybar 2>/dev/null || true
+  ) &
+}
+
+case ${1:-} in
+  volume)
+    case ${2:-} in
+      up) wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ ;;
+      down) wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%- ;;
+      mute) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+      *) exit 1 ;;
+    esac
+    line=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+    pct=$(printf '%s\n' "$line" | awk '{printf "%d", $2 * 100}')
+    case $line in
+      *MUTED*) show volume muted 8 ;;
+      *) show volume "${pct}%" 8 ;;
+    esac
+    ;;
+  light)
+    case ${2:-} in
+      up) brightnessctl set +5% >/dev/null ;;
+      down) brightnessctl set 5%- >/dev/null ;;
+      *) exit 1 ;;
+    esac
+    pct=$(brightnessctl -m | awk -F, '{gsub(/%/, "", $5); print $5}')
+    show light "${pct}%" 9
+    ;;
+  *) exit 1 ;;
+esac

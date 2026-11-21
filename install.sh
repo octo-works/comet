@@ -107,6 +107,7 @@ install -Dm755 "$root/bin/comet-waybar" /usr/bin/comet-waybar
 install -Dm755 "$root/bin/comet-keys" /usr/bin/comet-keys
 install -Dm755 "$root/bin/comet-greet" /usr/bin/comet-greet
 install -Dm755 "$root/bin/comet-shell" /usr/bin/comet-shell
+install -Dm755 "$root/bin/comet-level" /usr/bin/comet-level
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css

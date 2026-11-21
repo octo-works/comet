@@ -76,12 +76,12 @@ bindsym $mod+button2 resize
 bindsym Print exec grim -g "$(slurp)" /tmp/comet-shot.png && satty -f /tmp/comet-shot.png
 bindsym Shift+Print exec grim /tmp/comet-shot.png && satty -f /tmp/comet-shot.png
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec comet-level volume up
+bindsym XF86AudioLowerVolume exec comet-level volume down
+bindsym XF86AudioMute exec comet-level volume mute
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec comet-level light up
+bindsym XF86MonBrightnessDown exec comet-level light down
 
 exec foot --server
 exec swaybg -i /usr/share/comet/walls/chris-henry-bgBhzcfnvds-unsplash.jpg -m fill
