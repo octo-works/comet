@@ -91,6 +91,8 @@ fi
 # tlp.service is After=multi-user.target, so enable --now cancels the start job.
 systemctl enable tlp.service
 tlp start
+systemctl enable greetd.service
+systemctl set-default graphical.target
 
 # foot warns and falls back when LANG is C. Leave a real locale alone.
 if [ -f /etc/locale.conf ] && grep -q '^LANG=' /etc/locale.conf; then
@@ -117,6 +119,8 @@ install -Dm644 "$root/system/logind.conf.d/comet.conf" /etc/systemd/logind.conf.
 install -Dm644 "$root/system/fonts/99-comet-mono.conf" /etc/fonts/conf.d/99-comet-mono.conf
 install -Dm644 "$root/system/xdg-desktop-portal/portals.conf" /etc/xdg/xdg-desktop-portal/portals.conf
 install -Dm644 "$root/system/pacman.hooks/comet-os-release.hook" /etc/pacman.d/hooks/comet-os-release.hook
+install -Dm644 "$root/system/greetd/config.toml" /etc/greetd/config.toml
+install -Dm644 "$root/system/tuigreet/config.toml" /etc/tuigreet/config.toml
 
 install -d /etc/comet
 mapfile -t panel < <(detect_connector)

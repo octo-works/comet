@@ -36,3 +36,5 @@ lazygit
 git
 fd
 ripgrep
+greetd
+greetd-tuigreet

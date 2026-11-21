@@ -1,0 +1,36 @@
+[display]
+show_time = true
+greeting = "comet"
+
+[remember]
+username = true
+
+[secret]
+mode = "characters"
+characters = "*"
+
+# shortcut: 12 fps while the login screen is up, raise fps if the rain looks sparse
+[background]
+kind = "matrix"
+fps = 12
+
+[background.matrix]
+head_color = "#ebdbb2"
+bright_color = "#b8bb26"
+dim_color = "#3c3836"
+min_length = 6
+max_length = 16
+min_speed = 0.25
+max_speed = 0.8
+
+[theme]
+border = "yellow"
+text = "white"
+time = "yellow"
+container = "black"
+title = "green"
+greet = "yellow"
+prompt = "green"
+input = "white"
+action = "gray"
+button = "yellow"

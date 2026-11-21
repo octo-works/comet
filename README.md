@@ -1,6 +1,6 @@
 # Comet
 
-Comet is a Sway session for a minimal Arch install. It starts from the tty1 login, with no display manager. The target machine is a ThinkPad X1 Carbon Gen 5. A 2560×1440 panel gets scale 1.5. A 1920×1080 panel gets scale 1.
+Comet is a Sway session for a minimal Arch install. greetd and tuigreet take tty1, with matrix rain behind the login form. The target machine is a ThinkPad X1 Carbon Gen 5. A 2560×1440 panel gets scale 1.5. A 1920×1080 panel gets scale 1.
 
 This repository is the whole system. Re-running the installer refreshes `/usr/share/comet` and the system drop-ins.
 
@@ -16,11 +16,11 @@ On the target machine, as root:
 ./install.sh
 ```
 
-The script refuses to run unless it is root, `/etc/arch-release` exists, and a default route is up. It installs [packages.txt](packages.txt) in one transaction, enables NetworkManager and tlp, and turns power-profiles-daemon off if that unit is present. It writes `/etc/comet/sway-output.conf` from the internal panel in sysfs.
+The script refuses to run unless it is root, `/etc/arch-release` exists, and a default route is up. It installs [packages.txt](packages.txt) in one transaction, enables NetworkManager, tlp, and greetd, and turns power-profiles-daemon off if that unit is present. Boot is set to `graphical.target` so greetd starts. It writes `/etc/comet/sway-output.conf` from the internal panel in sysfs.
 
 `./install.sh --check` only tests the panel snippet. It does not install anything.
 
-Reboot, then log in on tty1. Sway starts from `/etc/profile.d/comet.sh` for bash and zsh login shells.
+Reboot. tty1 shows tuigreet. The rain runs at 12 frames per second until login, then it is gone. F12 is power. A shell login on tty1 still starts Sway from `/etc/profile.d/comet.sh`.
 
 ## Keys
 
