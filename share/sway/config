@@ -30,11 +30,11 @@ bindgesture swipe:3:up workspace prev
 bindgesture swipe:3:down workspace next
 
 bindsym $mod+Return exec footclient
-bindsym $mod+d exec fuzzel
+bindsym $mod+space exec fuzzel
 bindsym $mod+e exec footclient yazi
 bindsym $mod+g exec footclient lazygit
 bindsym $mod+Shift+e exec comet-power
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle

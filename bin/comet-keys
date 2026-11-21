@@ -3,11 +3,11 @@ cat <<'EOF'
 comet
 
 super+return        terminal
-super+d             launcher
+super+space         launcher
+super+q             close window
 super+e             yazi
 super+g             lazygit
 super+shift+e       power
-super+shift+q       close window
 super+f             fullscreen
 super+shift+c       reload sway
 super+h/j/k/l       focus

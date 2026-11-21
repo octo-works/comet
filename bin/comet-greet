@@ -1,0 +1,10 @@
+#!/bin/sh
+# greetd runs this as the greeter user. It must stay in tuigreet until someone authenticates.
+if /usr/bin/tuigreet --help 2>&1 | grep -q -- '--background'; then
+  exec /usr/bin/tuigreet \
+    --config /etc/tuigreet/config.toml \
+    --background matrix \
+    --time --remember --asterisks \
+    --cmd /usr/bin/comet-session
+fi
+exec /usr/bin/tuigreet --time --remember --asterisks --cmd /usr/bin/comet-session

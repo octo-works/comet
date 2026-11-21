@@ -1,8 +1,7 @@
 [terminal]
 vt = 1
 
-# tuigreet is the greeter. greetd runs it as the greeter user, which is not a desktop session.
-# An absolute path matters: greetd's PATH will not find a bare "tuigreet", and the VT is then left logged in as greeter.
+# comet-greet is tuigreet. It is not a desktop session for the greeter user.
 [default_session]
-command = "/usr/bin/tuigreet --config /etc/tuigreet/config.toml --background matrix --time --remember --asterisks --cmd /usr/bin/comet-session"
+command = "/usr/bin/comet-greet"
 user = "greeter"

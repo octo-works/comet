@@ -105,6 +105,8 @@ install -Dm755 "$root/bin/comet-session" /usr/bin/comet-session
 install -Dm755 "$root/bin/comet-power" /usr/bin/comet-power
 install -Dm755 "$root/bin/comet-waybar" /usr/bin/comet-waybar
 install -Dm755 "$root/bin/comet-keys" /usr/bin/comet-keys
+install -Dm755 "$root/bin/comet-greet" /usr/bin/comet-greet
+install -Dm755 "$root/bin/comet-shell" /usr/bin/comet-shell
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
@@ -127,6 +129,7 @@ if [ -e /etc/systemd/system/display-manager.service ]; then
   systemctl disable display-manager.service || true
 fi
 systemctl enable greetd.service
+systemctl disable getty@tty1.service || true
 systemctl set-default graphical.target
 if id greeter >/dev/null 2>&1; then
   usermod -s /usr/bin/nologin greeter

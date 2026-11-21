@@ -1,0 +1,6 @@
+#!/bin/sh
+# A tty profile that execs Sway would close this window. Skip that profile.
+if [ -z "${WAYLAND_DISPLAY:-}" ]; then
+  export WAYLAND_DISPLAY=comet
+fi
+exec /bin/bash --noprofile

@@ -20,14 +20,15 @@ The script refuses to run unless it is root, `/etc/arch-release` exists, and a d
 
 `./install.sh --check` only tests the panel snippet. It does not install anything.
 
-Reboot. tty1 shows tuigreet, with matrix rain behind the box at 15 frames per second. The greeter user is not a desktop login. F12 is power. A shell login on tty1 still starts Sway from `/etc/profile.d/comet.sh`.
+Reboot. tty1 shows tuigreet, with matrix rain behind the box at 15 frames per second. The greeter user is not a desktop login. F12 is power. A shell on tty2 can start the desktop with `exec comet-session`.
 
 ## Keys
 
 | Key | Action |
 | --- | --- |
 | Super+Return | foot |
-| Super+d | fuzzel |
+| Super+Space | fuzzel |
+| Super+q | close window |
 | Super+e | yazi |
 | Super+g | lazygit |
 | Super+Shift+e | lock, suspend, reboot, poweroff |
