@@ -40,29 +40,6 @@ window#waybar {
     color: #8ec07c;
 }
 
-#light,
-#group-light,
-#volume,
-#group-volume {
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-#custom-light,
-#custom-vol {
-    background: #282828;
-    border: 1px solid #3c3836;
-    border-radius: 12px;
-    margin-left: 4px;
-    padding: 2px 8px;
-    min-width: 0;
-    font-size: 13px;
-}
-
-#custom-light { color: #fabd2f; }
-#custom-vol { color: #8ec07c; }
-
 #workspaces button {
     color: #928374;
     background: transparent;

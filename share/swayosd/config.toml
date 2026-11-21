@@ -1,0 +1,7 @@
+[server]
+style = "/etc/xdg/swayosd/style.css"
+top_margin = 0.92
+max_volume = 100
+show_percentage = true
+min_brightness = 5
+duration = 1200

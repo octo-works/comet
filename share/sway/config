@@ -33,7 +33,8 @@ bindsym $mod+Return exec footclient
 bindsym $mod+space exec fuzzel
 bindsym $mod+e exec comet-scratch scratch-yazi yazi
 bindsym $mod+g exec comet-scratch scratch-lazygit lazygit
-bindsym $mod+b exec footclient --app-id tui-float btop
+bindsym $mod+b exec vivaldi-stable
+bindsym $mod+o layout toggle split tabbed stacking
 bindsym $mod+w exec comet-wall pick
 bindsym $mod+Shift+e exec comet-power
 bindsym $mod+q kill
@@ -82,17 +83,19 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+button1 move
 bindsym $mod+button2 resize
 
-bindsym Print exec grim -g "$(slurp)" /tmp/comet-shot.png && satty -f /tmp/comet-shot.png
-bindsym Shift+Print exec grim /tmp/comet-shot.png && satty -f /tmp/comet-shot.png
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | satty -f - --copy-command wl-copy
+bindsym Print exec grim -g "$(slurp)" - | satty -f - --copy-command wl-copy
+bindsym Shift+Print exec grim - | satty -f - --copy-command wl-copy
 
-bindsym XF86AudioRaiseVolume exec comet-level volume up
-bindsym XF86AudioLowerVolume exec comet-level volume down
-bindsym XF86AudioMute exec comet-level volume mute
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp exec comet-level light up
-bindsym XF86MonBrightnessDown exec comet-level light down
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 
 exec foot --server
+exec swayosd-server
 exec comet-wall restore
 exec mako -c /usr/share/comet/mako/config
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1

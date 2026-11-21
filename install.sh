@@ -110,6 +110,9 @@ install -Dm755 "$root/bin/comet-shell" /usr/bin/comet-shell
 install -Dm755 "$root/bin/comet-level" /usr/bin/comet-level
 install -Dm755 "$root/bin/comet-wall" /usr/bin/comet-wall
 install -Dm755 "$root/bin/comet-scratch" /usr/bin/comet-scratch
+install -Dm644 "$root/system/fish/conf.d/comet.fish" /etc/fish/conf.d/comet.fish
+install -Dm644 "$root/share/swayosd/config.toml" /etc/xdg/swayosd/config.toml
+install -Dm644 "$root/share/swayosd/style.css" /etc/xdg/swayosd/style.css
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
@@ -140,6 +143,16 @@ systemctl set-default graphical.target
 if id greeter >/dev/null 2>&1; then
   usermod -s /usr/bin/nologin greeter
   install -d -o greeter -g greeter -m 0755 /var/cache/tuigreet
+fi
+if [ -x /usr/bin/fish ]; then
+  while IFS=: read -r name _ uid _ _ _ shell; do
+    [ "$uid" -ge 1000 ] || continue
+    [ "$uid" -lt 60000 ] || continue
+    [ "$shell" = /usr/bin/nologin ] && continue
+    [ "$shell" = /usr/bin/fish ] && continue
+    usermod -s /usr/bin/fish "$name"
+  done < /etc/passwd
+  useradd -D -s /usr/bin/fish
 fi
 
 install -d /etc/comet

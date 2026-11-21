@@ -1,0 +1,28 @@
+window#osd {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #3c3836;
+    background: alpha(#1d2021, 0.94);
+}
+
+image {
+    color: #ebdbb2;
+}
+
+label {
+    color: #ebdbb2;
+    font-family: "JetBrainsMono Nerd Font Mono";
+    font-size: 13px;
+}
+
+trough {
+    min-height: 8px;
+    border-radius: 4px;
+    background: #3c3836;
+}
+
+progress {
+    min-height: 8px;
+    border-radius: 4px;
+    background: #fabd2f;
+}

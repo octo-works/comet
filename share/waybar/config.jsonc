@@ -11,15 +11,7 @@
   },
   "group/controls": {
     "orientation": "inherit",
-    "modules": ["group/light", "group/volume", "battery"]
-  },
-  "group/light": {
-    "orientation": "horizontal",
-    "modules": ["backlight", "custom/light"]
-  },
-  "group/volume": {
-    "orientation": "horizontal",
-    "modules": ["pulseaudio", "custom/vol"]
+    "modules": ["backlight", "pulseaudio", "battery"]
   },
   "custom/launcher": {
     "format": "󰘩",
@@ -44,12 +36,14 @@
   "cpu": {
     "format": "󰻠",
     "tooltip-format": "cpu {usage}%",
-    "interval": 5
+    "interval": 5,
+    "on-click": "footclient btop"
   },
   "memory": {
     "format": "󰍛",
     "tooltip-format": "mem {percentage}%",
-    "interval": 5
+    "interval": 5,
+    "on-click": "footclient btop"
   },
   "temperature": {
     "format": "󰔏",
@@ -60,27 +54,17 @@
   "backlight": {
     "format": "󰃟",
     "tooltip-format": "light {percent}%",
-    "on-scroll-up": "comet-level light up",
-    "on-scroll-down": "comet-level light down"
-  },
-  "custom/light": {
-    "exec": "cat \"${XDG_RUNTIME_DIR:-/tmp}/comet/light\" 2>/dev/null || true",
-    "signal": 9,
-    "format": "{}"
+    "on-scroll-up": "swayosd-client --brightness raise",
+    "on-scroll-down": "swayosd-client --brightness lower"
   },
   "pulseaudio": {
     "format": "󰕾",
     "format-muted": "󰖁",
     "tooltip-format": "vol {volume}%",
     "max-volume": 100,
-    "on-click": "comet-level volume mute",
-    "on-scroll-up": "comet-level volume up",
-    "on-scroll-down": "comet-level volume down"
-  },
-  "custom/vol": {
-    "exec": "cat \"${XDG_RUNTIME_DIR:-/tmp}/comet/volume\" 2>/dev/null || true",
-    "signal": 8,
-    "format": "{}"
+    "on-click": "swayosd-client --output-volume mute-toggle",
+    "on-scroll-up": "swayosd-client --output-volume raise",
+    "on-scroll-down": "swayosd-client --output-volume lower"
   },
   "battery": {
     "interval": 30,

@@ -4,13 +4,15 @@ comet
 
 super+return        terminal
 super+space         launcher
+super+b             vivaldi
 super+q             close window
 super+e             yazi (scratchpad)
 super+g             lazygit (scratchpad)
-super+b             btop
 super+w             wallpaper
+super+o             cycle split / tabbed / stack
 super+t             split / tabbed
 super+s             stack
+super+shift+s       screenshot to clipboard
 super+minus         park window
 super+plus          show parked window
 super+shift+e       power
@@ -27,6 +29,7 @@ volume keys         volume, capped at 100%
 mute key            mute
 mic mute key        mute microphone
 brightness keys     backlight
+cpu or memory       btop
 print               region screenshot
 shift+print         full screenshot
 super+/             this list
