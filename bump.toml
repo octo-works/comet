@@ -20,7 +20,7 @@ patch = 0
 separator = "-"
 name = "iso"
 delimiter = "."
-distance = 1
+distance = 2
 
 # suffix type:
 #  - "git_sha"  : append 7 char sha1 of the current commit (default)
@@ -31,7 +31,7 @@ separator = "+"
 
 [timestamp]
 format = "%Y-%m-%d %H:%M:%S %Z"
-last = "2026-11-22 16:21:00 UTC"
+last = "2026-11-22 16:59:00 UTC"
 
 # printed label: shown but never tracked, useful injecting dynamic values
 #  - position: "before-prefix", "after-prefix",

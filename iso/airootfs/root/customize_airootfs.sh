@@ -17,5 +17,6 @@ if [ -d /root/comet/dmz/archinstall ]; then
   cp -a /root/comet/dmz/archinstall/. /root/archinstall/
 fi
 
-curl -fsSL https://sinkd.octoworks.dev/install.sh | sh
-curl -fsSL https://reflect.ballast.dev/install.sh | sh
+# sinkd and reflect installers returned 403 from the image build. Put them back when the URLs allow it.
+# curl -fsSL https://sinkd.octoworks.dev/install.sh | sh
+# curl -fsSL https://reflect.ballast.dev/install.sh | sh
