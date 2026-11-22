@@ -2,7 +2,7 @@
 # Pick or restore a static swaybg image. swaybg exits its work after the first frame.
 dir=/usr/share/comet/walls
 state=${XDG_STATE_HOME:-$HOME/.local/state}/comet/wallpaper
-default=$dir/chris-henry-bgBhzcfnvds-unsplash.jpg
+default=$dir/jack-dong-v-eJthc_z6c-unsplash-cropped.jpg
 
 apply() {
   pkill -x swaybg 2>/dev/null || true
