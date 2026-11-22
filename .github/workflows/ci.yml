@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    tags:
+      - "**"
+
+permissions:
+  contents: write
+
+jobs:
+  iso:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/share/boost || true
+
+      - uses: actions/checkout@v7
+
+      - name: Build ISO
+        run: |
+          docker run --privileged --rm \
+            -v "$GITHUB_WORKSPACE":/comet \
+            -w /comet \
+            archlinux:latest \
+            bash -eo pipefail -c '
+              pacman-key --init
+              pacman-key --populate archlinux
+              pacman -Syu --noconfirm archiso
+              mkarchiso -v -w /tmp/comet-iso -o /comet/out /comet/iso
+            '
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          iso=(out/*.iso)
+          size=$(stat -c%s "${iso[0]}")
+          if [ "$size" -gt 2147483648 ]; then
+            echo "ISO is larger than GitHub's 2 GiB release asset limit" >&2
+            exit 1
+          fi
+          gh release create "$GITHUB_REF_NAME" "${iso[0]}" \
+            --title "$GITHUB_REF_NAME" \
+            --notes "$(cat <<EOF
+          Comet live ISO.
+
+          Boot from USB in UEFI mode with Secure Boot off.
+          Log in as \`comet\` with password \`comet\`.
+
+          EOF
+          )"
