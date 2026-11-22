@@ -13,6 +13,7 @@ super+shift+s           clipboard shot
 super+minus             park window
 super+plus              show parked
 super+/                 all keys
+super+esc               lock
 super+shift+e           power
 super+f                 fullscreen
 super+shift+space       float window

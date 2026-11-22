@@ -109,6 +109,7 @@ install -Dm755 "$root/bin/comet-session" /usr/bin/comet-session
 install -Dm755 "$root/bin/comet-power" /usr/bin/comet-power
 install -Dm755 "$root/bin/comet-waybar" /usr/bin/comet-waybar
 install -Dm755 "$root/bin/comet-keys" /usr/bin/comet-keys
+install -Dm755 "$root/bin/comet-keyhint" /usr/bin/comet-keyhint
 install -Dm755 "$root/bin/comet-greet" /usr/bin/comet-greet
 install -Dm755 "$root/bin/comet-shell" /usr/bin/comet-shell
 install -Dm755 "$root/bin/comet-level" /usr/bin/comet-level

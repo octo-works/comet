@@ -15,6 +15,7 @@ super+s             stack
 super+shift+s       screenshot to clipboard
 super+minus         park window
 super+plus          show parked window
+super+esc           lock
 super+shift+e       power
 super+f             fullscreen
 super+shift+space   float window

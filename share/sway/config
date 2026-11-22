@@ -36,6 +36,7 @@ bindsym $mod+g exec comet-scratch scratch-lazygit lazygit
 bindsym $mod+b exec vivaldi-stable
 bindsym $mod+o layout toggle split tabbed stacking
 bindsym $mod+w exec comet-wall pick
+bindsym $mod+Escape exec swaylock -f
 bindsym $mod+Shift+e exec comet-power
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload

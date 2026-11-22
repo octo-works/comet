@@ -1,0 +1,19 @@
+#!/bin/sh
+# Waybar custom modules keep only the first output line unless the output is JSON.
+file=${HOME}/.config/comet/keys.txt
+if [ ! -f "$file" ]; then
+  file=/usr/share/comet/waybar/keys.txt
+fi
+if [ ! -f "$file" ]; then
+  printf '%s\n' '{"text":""}'
+  exit 0
+fi
+awk '
+BEGIN { printf "{\"text\":\"" }
+{
+  gsub(/\\/, "\\\\")
+  gsub(/"/, "\\\"")
+  printf "%s%s", (NR > 1 ? "\\n" : ""), $0
+}
+END { printf "\"}\n" }
+' "$file"
