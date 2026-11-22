@@ -18,7 +18,7 @@ patch = 0
 
 [phase]
 separator = "-"
-name = "pre-iso"
+name = "iso"
 delimiter = "."
 distance = 1
 
@@ -31,7 +31,7 @@ separator = "+"
 
 [timestamp]
 format = "%Y-%m-%d %H:%M:%S %Z"
-last = "2026-11-22 15:30:38 UTC"
+last = "2026-11-22 16:21:00 UTC"
 
 # printed label: shown but never tracked, useful injecting dynamic values
 #  - position: "before-prefix", "after-prefix",
