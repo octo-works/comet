@@ -1,0 +1,27 @@
+key combo               function
+super+return            terminal
+super+space             launcher
+super+q                 close window
+super+b                 vivaldi
+super+e                 yazi
+super+g                 lazygit
+super+w                 wallpaper
+super+o                 cycle layout
+super+t                 split / tabbed
+super+s                 stack
+super+shift+s           clipboard shot
+super+minus             park window
+super+plus              show parked
+super+/                 all keys
+super+shift+e           power
+super+f                 fullscreen
+super+shift+space       float window
+super+shift+c           reload sway
+super+h/j/k/l           focus
+super+shift+h/j/k/l     move window
+super+1-9               workspace
+super+shift+1-9         move to workspace
+3 finger swipe up       previous workspace
+3 finger swipe down     next workspace
+print                   region shot
+shift+print             full shot

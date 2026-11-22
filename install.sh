@@ -122,6 +122,7 @@ install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
 install -Dm644 "$root/share/waybar/keys.jsonc" /usr/share/comet/waybar/keys.jsonc
 install -Dm644 "$root/share/waybar/keys.css" /usr/share/comet/waybar/keys.css
+install -Dm644 "$root/share/waybar/keys.txt" /usr/share/comet/waybar/keys.txt
 install -Dm644 "$root/share/foot/foot.ini" /etc/xdg/foot/foot.ini
 install -Dm644 "$root/share/fuzzel/fuzzel.ini" /etc/xdg/fuzzel/fuzzel.ini
 install -Dm644 "$root/share/swaylock/config" /etc/swaylock/config
@@ -134,6 +135,7 @@ install -Dm644 "$root/system/xdg-desktop-portal/portals.conf" /etc/xdg/xdg-deskt
 install -Dm644 "$root/system/pacman.hooks/comet-os-release.hook" /etc/pacman.d/hooks/comet-os-release.hook
 install -Dm644 "$root/system/greetd/config.toml" /etc/greetd/config.toml
 install -Dm644 "$root/system/tuigreet/config.toml" /etc/tuigreet/config.toml
+install -Dm644 "$root/system/vconsole.conf" /etc/vconsole.conf
 install -d /usr/share/comet/walls
 while IFS= read -r img; do
   install -m644 "$img" "/usr/share/comet/walls/$(basename "$img")"

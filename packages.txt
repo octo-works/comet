@@ -34,6 +34,7 @@ swayidle
 swaylock
 swayosd
 television
+terminus-font
 tlp
 ttf-jetbrains-mono-nerd
 vim

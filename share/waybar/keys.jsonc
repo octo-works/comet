@@ -5,13 +5,10 @@
   "passthrough": true,
   "margin-bottom": 8,
   "margin-right": 12,
-  "modules-right": ["custom/keys-a", "custom/keys-b"],
-  "custom/keys-a": {
-    "format": "key combo         function\nsuper+return      terminal\nsuper+space       launcher\nsuper+b           vivaldi\nsuper+q           close window\nsuper+e           yazi\nsuper+g           lazygit\nsuper+w           wallpaper\nsuper+o           cycle layout\nsuper+t           split / tabbed\nsuper+s           stack\nsuper+shift+s     clipboard shot\nsuper+minus       park window\nsuper+plus        show parked\nsuper+/           all keys",
-    "tooltip": false
-  },
-  "custom/keys-b": {
-    "format": "key combo               function\nsuper+shift+e           power\nsuper+f                 fullscreen\nsuper+shift+space       float window\nsuper+shift+c           reload sway\nsuper+h/j/k/l           focus\nsuper+shift+hjkl        move window\nsuper+1-9               workspace\nsuper+shift+1-9         move to workspace\n3 finger swipe up       previous workspace\n3 finger swipe down     next workspace\ncpu / memory            btop\nprint                   region shot\nshift+print             full shot",
+  "modules-right": ["custom/keys"],
+  "custom/keys": {
+    "exec": "cat \"${HOME}/.config/comet/keys.txt\" 2>/dev/null || cat /usr/share/comet/waybar/keys.txt",
+    "interval": 2,
     "tooltip": false
   }
 }
