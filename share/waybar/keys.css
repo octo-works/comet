@@ -1,0 +1,16 @@
+window#waybar {
+    background: transparent;
+}
+
+#custom-keys-a,
+#custom-keys-b {
+    color: #928374;
+    font-family: "JetBrainsMono Nerd Font Mono";
+    font-size: 12px;
+    background: transparent;
+    padding: 0;
+}
+
+#custom-keys-a {
+    margin-right: 32px;
+}

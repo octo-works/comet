@@ -120,6 +120,8 @@ install -Dm644 "$root/share/swayosd/style.css" /etc/xdg/swayosd/style.css
 install -Dm644 "$root/share/sway/config" /usr/share/comet/sway/config
 install -Dm644 "$root/share/waybar/config.jsonc" /usr/share/comet/waybar/config.jsonc
 install -Dm644 "$root/share/waybar/style.css" /usr/share/comet/waybar/style.css
+install -Dm644 "$root/share/waybar/keys.jsonc" /usr/share/comet/waybar/keys.jsonc
+install -Dm644 "$root/share/waybar/keys.css" /usr/share/comet/waybar/keys.css
 install -Dm644 "$root/share/foot/foot.ini" /etc/xdg/foot/foot.ini
 install -Dm644 "$root/share/fuzzel/fuzzel.ini" /etc/xdg/fuzzel/fuzzel.ini
 install -Dm644 "$root/share/swaylock/config" /etc/swaylock/config

@@ -95,6 +95,7 @@ bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
 bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 
 exec foot --server
+exec waybar -c /usr/share/comet/waybar/keys.jsonc -s /usr/share/comet/waybar/keys.css
 exec swayosd-server
 exec comet-wall restore
 exec mako -c /usr/share/comet/mako/config
