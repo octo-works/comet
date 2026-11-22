@@ -32,7 +32,7 @@ power = 12
 # shortcut: 15 fps while the login screen is up, raise fps if the rain looks sparse
 [background]
 kind = "matrix"
-fps = 15
+fps = 24
 
 [background.matrix]
 head_color = "#CCFFCC"
@@ -41,7 +41,7 @@ dim_color = "#006622"
 min_length = 6
 max_length = 18
 min_speed = 0.30
-max_speed = 0.80
+max_speed = 1.10
 mutate_chance = 0.02
 
 [session]

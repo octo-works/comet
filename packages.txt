@@ -37,6 +37,7 @@ television
 tlp
 ttf-jetbrains-mono-nerd
 vim
+vivaldi
 waybar
 wireplumber
 wl-clipboard
