@@ -78,19 +78,23 @@ if [ $# -gt 0 ]; then
 fi
 [ "$(id -u)" -eq 0 ] || fail "run as root on the target machine"
 [ -f /etc/arch-release ] || fail "Comet installs onto Arch (/etc/arch-release is missing)"
-ip route show default | grep -q . || fail "no default route; connect to the network first"
 
-mapfile -t pkgs < <(grep -vE '^[[:space:]]*(#|$)' "$root/packages.txt")
-[ "${#pkgs[@]}" -gt 0 ] || fail "packages.txt is empty"
-pacman -S --needed --noconfirm "${pkgs[@]}"
-
-systemctl enable --now NetworkManager.service
-if systemctl cat power-profiles-daemon.service >/dev/null 2>&1; then
-  systemctl disable --now power-profiles-daemon.service
+if [ "${COMET_ISO:-}" != 1 ]; then
+  ip route show default | grep -q . || fail "no default route; connect to the network first"
+  mapfile -t pkgs < <(grep -vE '^[[:space:]]*(#|$)' "$root/packages.txt")
+  [ "${#pkgs[@]}" -gt 0 ] || fail "packages.txt is empty"
+  pacman -S --needed --noconfirm "${pkgs[@]}"
+  systemctl enable --now NetworkManager.service
+  if systemctl cat power-profiles-daemon.service >/dev/null 2>&1; then
+    systemctl disable --now power-profiles-daemon.service
+  fi
+  # tlp.service is After=multi-user.target, so enable --now cancels the start job.
+  systemctl enable tlp.service
+  tlp start
+else
+  systemctl enable NetworkManager.service
+  systemctl enable tlp.service
 fi
-# tlp.service is After=multi-user.target, so enable --now cancels the start job.
-systemctl enable tlp.service
-tlp start
 
 # foot warns and falls back when LANG is C. Leave a real locale alone.
 if [ -f /etc/locale.conf ] && grep -q '^LANG=' /etc/locale.conf; then
